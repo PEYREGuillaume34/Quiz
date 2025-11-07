@@ -59,6 +59,7 @@ body {
   animation: affichQuiz 4s ease 0s 1 normal none;
 }
 
+
 @keyframes affichQuiz {
 	0% {
 		opacity: 1;
@@ -270,5 +271,34 @@ h3 {
 		opacity: 1;
 		transform: translateX(0);
 	}
+}
+
+/* Styles pour le bouton de contrôle du son */
+.sound-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: 2px solid #333;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.sound-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.sound-button.muted {
+    border-color: #ff0000;
+    background-color: #ffe6e6;
+}
+
+#soundIcon {
+    display: block;
+    transition: opacity 0.3s ease;
 }
 

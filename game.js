@@ -203,3 +203,33 @@ function updateTimer() {
         suivant.style.background = 'green'
     }
 }
+
+// Variable globale pour contrôler l'état du son
+let isSoundEnabled = true;
+window.isSoundEnabled = isSoundEnabled; // Rendre accessible globalement
+
+// Fonction pour contrôler le son
+function initSoundToggle() {
+    const soundButton = document.getElementById("soundToggle");
+    const soundIcon = document.getElementById("soundIcon");
+    
+    soundButton.addEventListener("click", () => {
+        isSoundEnabled = !isSoundEnabled;
+        window.isSoundEnabled = isSoundEnabled; // Mettre à jour la variable globale
+        
+        if (isSoundEnabled) {
+            // Son activé
+            soundIcon.src = "images/picto/volume-2.svg";
+            soundIcon.alt = "Son activé";
+            soundButton.classList.remove("muted");
+        } else {
+            // Son coupé
+            soundIcon.src = "images/picto/volume-x.svg";
+            soundIcon.alt = "Son coupé";
+            soundButton.classList.add("muted");
+        }
+    });
+}
+
+// Initialiser le bouton au chargement
+initSoundToggle();
