@@ -3,7 +3,7 @@ function playVrai() {
     vrai.play()
 }
 function playFaux() {
-    let faux = new Audio('./Sound/False.mp3')
+    let faux = new Audio('./Sound/')
     faux.play()
 }
 export {playVrai, playFaux};
