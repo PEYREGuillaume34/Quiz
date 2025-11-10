@@ -204,26 +204,22 @@ function updateTimer() {
     }
 }
 
-// Variable globale pour contrôler l'état du son
+// Variable globale pour contrôler l'état du son (plus simple)
 let isSoundEnabled = true;
-window.isSoundEnabled = isSoundEnabled; // Rendre accessible globalement
 
-// Fonction pour contrôler le son
+// Fonction pour contrôler le son (simplifiée)
 function initSoundToggle() {
     const soundButton = document.getElementById("soundToggle");
     const soundIcon = document.getElementById("soundIcon");
     
     soundButton.addEventListener("click", () => {
         isSoundEnabled = !isSoundEnabled;
-        window.isSoundEnabled = isSoundEnabled; // Mettre à jour la variable globale
         
         if (isSoundEnabled) {
-            // Son activé
             soundIcon.src = "images/picto/volume-2.svg";
             soundIcon.alt = "Son activé";
             soundButton.classList.remove("muted");
         } else {
-            // Son coupé
             soundIcon.src = "images/picto/volume-x.svg";
             soundIcon.alt = "Son coupé";
             soundButton.classList.add("muted");
