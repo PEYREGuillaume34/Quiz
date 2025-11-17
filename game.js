@@ -110,11 +110,11 @@ function boutonAction() {
                 nouvelleBalise("h4", "Bravo ! 👍", boutons);
                 console.log("Le score est =", score);
                 console.log("vincent est un BOSSS");
-                playVrai()
+                playVrai(isSoundEnabled);
             } else {
                 item.style.background = 'red'
                 nouvelleBalise("h4", "Dommage 👎", boutons);
-                playFaux()
+                playFaux(isSoundEnabled);
             }
             for (let button of tabBoutons) {
                 button.disabled = true;
