@@ -102,14 +102,12 @@ function relancerAnimationOiseau() {
 function boutonAction() {
     let idx = 0;
     for (let item of tabBoutons) {
-        console.log(`tabBoutons a l'indice ${idx} = `, item.id);
         idx++
         item.addEventListener("click", () => {
             if (correctAnswer === item.id) {
                 score = score + 1;
                 nouvelleBalise("h4", "Bravo ! 👍", boutons);
                 console.log("Le score est =", score);
-                console.log("vincent est un BOSSS");
                 playVrai(isSoundEnabled);
             } else {
                 item.style.background = 'red'
