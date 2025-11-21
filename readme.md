@@ -23,11 +23,11 @@ Quiz interactif comportant 7 questions sur les oiseaux avec un système de score
 
 ### Demo
 
-🔗 [Voir la démo en ligne](#) *(ajoutez votre lien GitHub Pages si disponible)*
+🔗 [Voir la démo en ligne](https://vercel.com/peyre-guillaumes-projects/quiz/AfrwpgfK9D4eYBtYfULRVaZy1B98)
 
 ### Captures d'écran
 
-![Screenshot du quiz](images/screenshot.png) *(à ajouter)*
+![Screenshot du quiz](images/screenshot.png)
 
 ## ✨ Fonctionnalités
 
@@ -56,7 +56,6 @@ Quiz interactif comportant 7 questions sur les oiseaux avec un système de score
 - Gestion d'état
 - setInterval / clearInterval
 - Animations CSS (@keyframes)
-- Courbes de Bézier personnalisées
 
 ## 📦 Installation
 
@@ -74,23 +73,9 @@ cd Quiz
 
 2. **Ouvrir avec un serveur local**
 
-Option 1 : Avec VS Code et l'extension Live Server
+Avec VS Code et l'extension Live Server
 - Clic droit sur index.html → "Open with Live Server"
 
-Option 2 : Avec Python
-```bash
-python -m http.server 8000
-```
-
-Option 3 : Avec Node.js (http-server)
-```bash
-npx http-server
-```
-
-3. **Accéder au quiz**
-- Ouvrir votre navigateur à `http://localhost:8000` (ou le port indiqué)
-
-⚠️ **Note** : Le projet doit être ouvert via un serveur local (pas en ) pour que les modules ES6 fonctionnent correctement.
 
 ## 🎮 Utilisation
 
@@ -242,40 +227,3 @@ Projet réalisé en collaboration avec :
 
 Dans le cadre de la formation **Ada Tech School** - 2025
 
-## 📄 License
-
-Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
-
-## 🙏 Remerciements
-
-- Ada Tech School pour l'encadrement
-- [Nom de la source] pour les effets sonores
-- [Nom de la source] pour les images/GIFs
-- La communauté open-source pour l'inspiration
-
----
-
-### 2. `LICENSE` (MIT)
-```
-MIT License
-
-Copyright (c) 2025 Guillaume PEYRE
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
