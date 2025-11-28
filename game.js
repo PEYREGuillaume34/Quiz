@@ -1,5 +1,5 @@
 import Quiz from './questions.js';
-import {playVrai, playFaux} from './sons.js';
+import { playVrai, playFaux } from './sons.js';
 import { progressionBarre, entierPourcent, nouvelleBalise } from './progression.js';
 
 const question = document.getElementById("questions");
@@ -25,7 +25,7 @@ let score = 0;
 
 progressionBarre(entierPourcent(1));
 
-suivant.innerText ="suivant";
+suivant.innerText = "suivant";
 suivant.disabled = true;
 suivant.style.background = 'grey'
 
@@ -42,13 +42,13 @@ function afficheReponses(numeroQuestion) {
     let tabRep = Quiz[numeroQuestion].reponses
     // console.log(`tableau de reponses :`, tabRep);
     let indice = 0;
-    for (let item of tabRep){ 
+    for (let item of tabRep) {
         tabBoutons[indice].innerText = item.reponse;
         // console.log(`reponses.reponse à l'indice ${indice} =`, item.reponse);
-        if (item.isCorrect===true){
+        if (item.isCorrect === true) {
             correctAnswer = tabBoutons[indice].id;
         }
-        indice++ ;
+        indice++;
     }
 }
 
@@ -56,86 +56,84 @@ afficheReponses(index);
 
 
 
-function boutonSuivant (){
-suivant.addEventListener("click", () => {
-    styleQuizz.removeChild(styleQuizz.lastChild) //retire bravo ou dommage
-    boutons.removeChild(boutons.lastChild)// retire le rectangle de progression precedent
-    index = index + 1;
-    progressionBarre(entierPourcent(index+1));
-    afficheQuestion(index);
-    afficheReponses(index);
+function boutonSuivant() {
+    suivant.addEventListener("click", () => {
+        styleQuizz.removeChild(styleQuizz.lastChild) //retire bravo ou dommage
+        boutons.removeChild(boutons.lastChild)// retire le rectangle de progression precedent
+        index = index + 1;
+        progressionBarre(entierPourcent(index + 1));
+        afficheQuestion(index);
+        afficheReponses(index);
 
         relancerAnimationOiseau();
 
-            //relance un nouveau timer à chaque fois qu’on clique sur "Suivant"
-            clearInterval(timerId);
-            timer = 20;
-            timerDisplay.innerText = `il ne reste plus que ${timer}`;
-            timerId = setInterval(updateTimer, 1000);                         
+        //relance un nouveau timer à chaque fois qu’on clique sur "Suivant"
+        clearInterval(timerId);
+        timer = 20;
+        timerDisplay.innerText = `il ne reste plus que ${timer}`;
+        timerId = setInterval(updateTimer, 1000);
 
-    for (let button of tabBoutons) {
-        button.disabled = false
-        suivant.disabled = true;
-        suivant.style.background = 'grey'
-        button.style.backgroundColor = "";
-        button.style.color = ""; 
-    }   
-})
+        for (let button of tabBoutons) {
+            button.disabled = false
+            suivant.disabled = true;
+            suivant.style.background = 'grey'
+            button.style.backgroundColor = "";
+            button.style.color = "";
+        }
+    })
 }
 
 boutonSuivant();
 
 function relancerAnimationOiseau() {
-  const bird = document.getElementById("bird");
-  bird.style.animation = "none";
-//   bird.offsetHeight; //
-  bird.style.animation = "flyWave 5s linear";
-
-  setTimeout(() => {
+    const bird = document.getElementById("bird");
     bird.style.animation = "none";
-    bird.style.left = "-200px";
-    bird.style.top = "100px";
-  }, 5000);
+    //   bird.offsetHeight; //
+    bird.style.animation = "flyWave 5s linear";
+
+    setTimeout(() => {
+        bird.style.animation = "none";
+        bird.style.left = "-200px";
+        bird.style.top = "100px";
+    }, 5000);
 }
 
 
-function boutonAction () {
+function boutonAction() {
     let idx = 0;
     for (let item of tabBoutons) {
-        console.log(`tabBoutons a l'indice ${idx} = ` ,item.id);
         idx++
         item.addEventListener("click", () => {
             if (correctAnswer === item.id) {
-                score = score +1;
+                score = score + 1;
                 nouvelleBalise("h4", "Bravo ! 👍", boutons);
                 console.log("Le score est =", score);
-                console.log("vincent est un BOSSS");
-                playVrai()
+                playVrai(isSoundEnabled);
             } else {
                 item.style.background = 'red'
                 nouvelleBalise("h4", "Dommage 👎", boutons);
-                playFaux()
+                playFaux(isSoundEnabled);
             }
-            for (let button of tabBoutons){
+            for (let button of tabBoutons) {
                 button.disabled = true;
                 if (button.id === correctAnswer) {
                     button.style.backgroundColor = 'green'
                 }
             }
-        
+
             suivant.disabled = false;
             suivant.style.background = 'green'
-            })
+        })
     }
 }
 boutonAction();
 
-function afficherScore(){
+function afficherScore() {
     let commentScore = document.createElement("h3")
     let baliseTexte = document.createElement("h2");
     score = entierPourcent(score);
     baliseTexte.innerText = `${score}% de reussite`;
-    
+
     if (score === 0) {
         commentScore.innerText = "T'es tres nul ..."
     }
@@ -147,7 +145,7 @@ function afficherScore(){
         commentScore.innerText = "T'y etais presque"
     } else if (score <= 100) {
         commentScore.innerText = "Parfait !"
-    } 
+    }
     nouvellePage.appendChild(baliseTexte);
     nouvellePage.appendChild(commentScore);
     nouvellePage.appendChild(rejouer)
@@ -156,15 +154,15 @@ function afficherScore(){
 
 
 
-function dernierePage () {
-    
+function dernierePage() {
+
     suivant.addEventListener("click", () => {
         if (index === Quiz.length) {
-        hideQuizz.style.display = "none";
-        document.getElementById("bird").style.display = "none";
-        nouvellePage.style.display = "block"
-         console.log("index  = ", index);
-         afficherScore()
+            hideQuizz.style.display = "none";
+            document.getElementById("bird").style.display = "none";
+            nouvellePage.style.display = "block"
+            console.log("index  = ", index);
+            afficherScore()
 
         }
     })
@@ -173,8 +171,7 @@ function dernierePage () {
 dernierePage()
 
 
-
-function refresh () {
+function refresh() {
     rejouer.addEventListener("click", () => {
         location.reload()
     })
@@ -185,6 +182,7 @@ refresh()
 
 
 
+
 let timerId = setInterval(updateTimer, 1000); //param  : fnct, param 2 repete la fnct tout les 1000milisec
 let timerDisplay = document.getElementById("timer")
 let timer = 20;
@@ -192,14 +190,40 @@ let timer = 20;
 function updateTimer() {
     timer--;
     timerDisplay.innerText = `il ne reste plus que ${timer} secondes`
-     
+
     if (timer <= 0) {
         timerDisplay.innerText = `Trop tard`
-    for (let btn of tabBoutons) {
-    btn.disabled = true;
+        for (let btn of tabBoutons) {
+            btn.disabled = true;
+        }
+        suivant.disabled = false; // Permet de passer à la question suivante
+        clearInterval(timerId); // Stoppe le timer une fois terminé
+        suivant.style.background = 'green'
     }
-    suivant.disabled = false; // Permet de passer à la question suivante
-    clearInterval(timerId); // Stoppe le timer une fois terminé
-    suivant.style.background = 'green'
 }
+
+// Variable globale pour contrôler l'état du son (plus simple)
+let isSoundEnabled = true;
+
+// Fonction pour contrôler le son (simplifiée)
+function initSoundToggle() {
+    const soundButton = document.getElementById("soundToggle");
+    const soundIcon = document.getElementById("soundIcon");
+    
+    soundButton.addEventListener("click", () => {
+        isSoundEnabled = !isSoundEnabled;
+        
+        if (isSoundEnabled) {
+            soundIcon.src = "images/picto/volume-2.svg";
+            soundIcon.alt = "Son activé";
+            soundButton.classList.remove("muted");
+        } else {
+            soundIcon.src = "images/picto/volume-x.svg";
+            soundIcon.alt = "Son coupé";
+            soundButton.classList.add("muted");
+        }
+    });
 }
+
+// Initialiser le bouton au chargement
+initSoundToggle();
